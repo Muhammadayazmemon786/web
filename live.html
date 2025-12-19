@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./asste file/image file/xpert solution academmy f-01.png">
+    <title>Live Class</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .boxes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .live-box {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid #00ff26;
+            box-shadow: 
+                0 0 20px #00ff26,
+                inset 0 0 20px rgba(0, 255, 38, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            animation: pulse 2s infinite alternate;
+            transition: transform 0.3s ease;
+        }
+
+        .live-box:hover {
+            transform: translateY(-5px);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 
+                    0 0 20px #00ff26,
+                    inset 0 0 20px rgba(0, 255, 38, 0.1);
+            }
+            100% {
+                box-shadow: 
+                    0 0 40px #00ff26,
+                    inset 0 0 40px rgba(0, 255, 38, 0.2);
+            }
+        }
+
+        .live-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .circle {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #ff0000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .add-button {
+            background: linear-gradient(45deg, #00ff26, #00cc1f);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 255, 38, 0.5);
+        }
+
+        .add-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 255, 38, 0.7);
+        }
+
+        .add-button:active {
+            transform: scale(0.95);
+        }
+
+        .glow-text {
+            color: #00ff26;
+            text-shadow: 0 0 10px #00ff26;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="boxes-container" id="boxesContainer"></div>
+
+    <script>
+        // Function to create a live box
+        function createLiveBox(boxNumber) {
+            const box = document.createElement('div');
+            box.className = 'live-box';
+            box.innerHTML = `
+                <div class="live-badge">
+                    <span class="circle">🔴</span>
+                    <span class="glow-text">Live Class</span>
+                </div>
+                
+                <div class="live-badge">
+                    <span class="circle">🔴</span>
+                    <span class="glow-text">Live Sections Box</span>
+                </div>
+                
+                <button class="add-button"><a href="https://linktr.ee/xpertsolutionacademy" style="color:white">JOIN</a></button>
+            `;
+            return box;
+        }
+
+        // Generate 10 boxes
+        const container = document.getElementById('boxesContainer');
+        for (let i = 1; i <= 10; i++) {
+            container.appendChild(createLiveBox(i));
+        }
+
+        // Add click event listeners to all add buttons
+        document.querySelectorAll('.add-button').forEach((button, index) => {
+            button.addEventListener('click', function() {
+                alert(`Box ${index + 1} added to schedule!`);
+            });
+        });
+
+        // Optional: Add a global "Add More Boxes" button
+    
+    
+        
+        addMoreButton.style.marginTop = '20px';
+        document.body.appendChild(addMoreButton);
+
+        addMoreButton.addEventListener('click', function() {
+            const newBoxCount = document.querySelectorAll('.live-box').length + 1;
+            const newBox = createLiveBox(newBoxCount);
+            container.appendChild(newBox);
+            
+            // Add click event to the new button
+            newBox.querySelector('.add-button').addEventListener('click', function() {
+                alert(`New box ${newBoxCount} added!`);
+            });
+        });
+    </script>
+</body>
+</html>
